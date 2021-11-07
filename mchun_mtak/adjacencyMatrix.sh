@@ -1,0 +1,1 @@
+gcc -o a adjacencyMatrix.c adjacencyMatrixMain.c linkedList.c llstack.c matrixSearch.c circularqueue.c

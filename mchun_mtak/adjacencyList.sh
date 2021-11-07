@@ -1,0 +1,1 @@
+gcc -o a adjacencyList.c linkedList.c adjacencyListMain.c -g
