@@ -1,4 +1,4 @@
-#include "linkedgraph.h"
+#include "../linkedgraph.h"
 #include "linkedstack.h"
 
 // trav_dfs(node v) {
