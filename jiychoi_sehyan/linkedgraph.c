@@ -165,8 +165,6 @@ int removeVertexLG(LinkedGraph* pGraph, int vertexID)
 
 int removeEdgeLG(LinkedGraph* pGraph, int fromVertexID, int toVertexID)
 {
-	int position;
-
 	if (fromVertexID >= pGraph->maxVertexCount || fromVertexID < 0)
 		return (FAIL);
 	if (toVertexID >= pGraph->maxVertexCount || toVertexID < 0)
