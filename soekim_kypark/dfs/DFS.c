@@ -14,19 +14,19 @@ void traversal_DFS(LinkedGraph* pGraph, int vertexID)
 
 void traversal_DFS2(LinkedGraph* pGraph, int vertexID)
 {
-  ArrayStack *S = createArrayStack(pGraph->maxVertexCount);
+  LinkedStack *S = createLinkedStack();
   StackNode V;
   ListNode *node;
-  
+
   pGraph->visited[vertexID] = 1;
   V.data = vertexID;
-  
-  pushAS(S, V);
-  while(!isArrayStackEmpty(S))
+
+  pushLS(S,V);
+  while(!isLinkedStackEmpty(S))
     {
-      StackNode* U = popAS(S);
+      StackNode* U= popLS(S);
       vertexID = U->data;
-      pGraph->visited[vertexID] =1;
+      pGraph->visited[vertexID] = 1;
       printf(" %d ",vertexID);
       for (int i = pGraph->ppAdjEdge[vertexID]->currentElementCount; i >= 1; i--)
         {
@@ -34,8 +34,8 @@ void traversal_DFS2(LinkedGraph* pGraph, int vertexID)
           V.data=node->data;
           if(node->data >= 0 && pGraph->visited[node->data] ==0)
           {
-            pushAS(S,V);
-            pGraph->visited[node->data] =1;
+            pushLS(S,V);
+            pGraph->visited[node->data] = 1;
           }
         }
     }
