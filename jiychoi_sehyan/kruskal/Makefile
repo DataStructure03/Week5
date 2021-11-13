@@ -1,7 +1,8 @@
 NAME	=	kruskal
 
 CC		=	gcc
-CF		=	-Wall -Wextra -Werror -I ./
+# CF		=	-Wall -Wextra -Werror -I ./
+CF		=	-g3 -fsanitize=address -I ./
 SRC	=	../arraygraph.c ./heap/heap.c kruskal.c
 
 SRC_DIR = ./
