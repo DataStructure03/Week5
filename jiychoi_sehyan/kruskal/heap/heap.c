@@ -54,6 +54,15 @@ int insertHeap(arrHeap *heap, element ele)
 			heap->heap[i].data = tmp;
 			i = i/2;
 		}
+	} else {
+		while ((i != 1) && heap->heap[i / 2].data > heap->heap[i].data)
+		{
+			int tmp;
+			tmp = heap->heap[i / 2].data;
+			heap->heap[i / 2].data = heap->heap[i].data;
+			heap->heap[i].data = tmp;
+			i = i/2;
+		}
 	}
 	heap->currentSize++;
 	return heap->heap[i].data;
