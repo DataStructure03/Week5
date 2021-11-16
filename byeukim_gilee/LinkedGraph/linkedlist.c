@@ -33,6 +33,7 @@ int			addLLElement(LinkedList* pList, int position, ListNode element)
 		prevNode = currentNode;
 		currentNode = currentNode->nextNode;
 	}
+    addNode->id = element.id;
 	addNode->data = element.data;
 	addNode->nextNode = currentNode;
 	prevNode->nextNode = addNode;

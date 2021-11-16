@@ -12,8 +12,6 @@ typedef struct ArrayGraphType
 
 # include <stdlib.h>
 # include <stdio.h>
-# include "../stack/stack.h"
-# include "../queue/queue.h"
 
 #define MAX_PATH 1000
 
@@ -44,8 +42,6 @@ int removeEdgeAG(ArrayGraph* pGraph, int fromVertexID, int toVertexID);
 
 
 void displayArrayGraph(ArrayGraph* pGraph);
-void AGDFS(ArrayGraph* pGraph, LinkedStack* pStack);
-void AGBFS(ArrayGraph* pGraph, Queue* path);
 
 #endif
 

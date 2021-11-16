@@ -64,6 +64,7 @@ int addEdgeLG(LinkedGraph* pGraph, int fromVertexID, int toVertexID)
     {
         if (!pGraph->ppAdjEdge[toVertexID])
             pGraph->ppAdjEdge[toVertexID] = (LinkedList*)calloc(1, sizeof(LinkedList));
+        temp.id = fromVertexID;
         temp.data = fromVertexID;
         addLLElement(pGraph->ppAdjEdge[toVertexID], pGraph->ppAdjEdge[toVertexID]->currentElementCount, temp);
     }
@@ -71,6 +72,7 @@ int addEdgeLG(LinkedGraph* pGraph, int fromVertexID, int toVertexID)
         return (FALSE);
     if (!pGraph->ppAdjEdge[fromVertexID])
         pGraph->ppAdjEdge[fromVertexID] = (LinkedList*)calloc(1, sizeof(LinkedList));
+    temp.id = toVertexID;
     temp.data = toVertexID;
     addLLElement(pGraph->ppAdjEdge[fromVertexID], pGraph->ppAdjEdge[fromVertexID]->currentElementCount, temp);
     pGraph->currentEdgeCount += 1;
@@ -167,7 +169,33 @@ void deleteLinkedGraph(LinkedGraph* pGraph)
 
 int addEdgewithWeightLG(LinkedGraph* pGraph, int fromVertexID, int toVertexID, int weight)
 {
-    
+    ListNode    temp;
+
+    if (!pGraph)
+        return (FALSE);
+    else if (fromVertexID < 0 || toVertexID < 0)
+        return (FALSE);
+    else if (fromVertexID >= pGraph->maxVertexCount || toVertexID >= pGraph->maxVertexCount)
+        return (FALSE);
+    else if (!pGraph->pVertex[fromVertexID] || !pGraph->pVertex[toVertexID])
+        return (FALSE);
+    if (pGraph->graphType == 1 && findGraphNodePosition(pGraph->ppAdjEdge[toVertexID], fromVertexID) == -1)
+    {
+        if (!pGraph->ppAdjEdge[toVertexID])
+            pGraph->ppAdjEdge[toVertexID] = (LinkedList*)calloc(1, sizeof(LinkedList));
+        temp.id = fromVertexID;
+        temp.data = weight;
+        addLLElement(pGraph->ppAdjEdge[toVertexID], pGraph->ppAdjEdge[toVertexID]->currentElementCount, temp);
+    }
+    if (findGraphNodePosition(pGraph->ppAdjEdge[fromVertexID], toVertexID) != -1)
+        return (FALSE);
+    if (!pGraph->ppAdjEdge[fromVertexID])
+        pGraph->ppAdjEdge[fromVertexID] = (LinkedList*)calloc(1, sizeof(LinkedList));
+    temp.id = toVertexID;
+    temp.data = weight;
+    addLLElement(pGraph->ppAdjEdge[fromVertexID], pGraph->ppAdjEdge[fromVertexID]->currentElementCount, temp);
+    pGraph->currentEdgeCount += 1;
+    return (TRUE);
 }
 
 void deleteGraphNode(LinkedList* pList, int delVertexID)
@@ -186,7 +214,7 @@ int findGraphNodePosition(LinkedList* pList, int vertexID)
     while (temp_LL)
     {
         idx += 1;
-        if (temp_LL->data == vertexID)
+        if (temp_LL->id == vertexID)
             return (idx);
         temp_LL = temp_LL->nextNode;
     }

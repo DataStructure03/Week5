@@ -49,13 +49,10 @@ int findLSNode(LinkedStack* pStack, int target)
 	int			idx = -1;
 
 	tmp_p = pStack->pTopElement;
-    // printf("Stack : ");
 	while (++idx < pStack->currentElementCount)
     {
-        // printf("%d ", tmp_p[idx].x);
         if (tmp_p[idx].x == target)
 			return TRUE;
     }
-    // printf("\n");
 	return FALSE;
 }
