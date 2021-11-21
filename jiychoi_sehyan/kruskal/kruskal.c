@@ -6,7 +6,7 @@ void kruskal(ArrayGraph *graph)
 {
 	//heap에 간선과 weight 넣기
 	//sort
-	//weight가 작은 간선부터 트리에 넣기
+	
 	//사이클이 생기는 간선은 넣지 않기
 	//다 넣으면 끝
 }
