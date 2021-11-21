@@ -12,7 +12,7 @@ void init_list(int *list);
 void selection_sort(int *list);
 void quick_sort(int *list, int left, int right);
 void shell_sort(int *list, int count);
-void radix_sort(int *list);
+void radix_sort(int *list, int n);
 // shell
 // radix
 

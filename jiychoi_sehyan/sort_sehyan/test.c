@@ -39,7 +39,8 @@ int main()
 
 	// selection_sort(list);
 	// quick_sort(list, 0, MAX - 1);
-	shell_sort(list, MAX);
+	// shell_sort(list, MAX);
+	radix_sort(list, MAX);
 
 	display_list(list);
 	return (0);
